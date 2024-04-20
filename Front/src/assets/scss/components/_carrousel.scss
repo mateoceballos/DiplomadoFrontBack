@@ -1,0 +1,92 @@
+@keyframes scrollAnimation {
+  from {
+    scroll-behavior: smooth;
+    scroll-left: 0;
+  }
+  to {
+    scroll-behavior: smooth;
+    scroll-left: 100%;
+  }
+}
+.carousel {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+
+  .prev,
+  .next {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    height: 4vw;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4vw;
+    z-index: 10;
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+  .prev {
+    left: 0.5vw;
+  }
+  .opa {
+    opacity: 0.5;
+  }
+  .next {
+    right: 0.5vw;
+  }
+  .ContentCarrusel {
+    background-color: $seconColor;
+    padding: 0 2%;
+    position: relative;
+    width: 100%;
+    .degradeGen {
+      height: 100%;
+      position: absolute;
+      top: 0;
+      width: 3%;
+    }
+    .degradeRL {
+      background: linear-gradient(
+        to left,
+        rgba(255, 255, 255, 0),
+        $seconColor
+      ); /* Difuminado de transparente a color de background */
+      left: 2%;
+    }
+    .degradeLR {
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0),
+        $seconColor
+      ); /* Difuminado de transparente a color de background */
+      right: 2%;
+    }
+
+    .slideContainer {
+      animation: scrollAnimation 1s forwards;
+      display: flex;
+      overflow: hidden;
+
+      .imgGeneral {
+        align-items: center;
+        color: $colorTxtPrin;
+        display: flex;
+        justify-content: center;
+        .contentImage {
+          align-items: center;
+          display: flex;
+          justify-content: center;
+
+          img {
+            background-size: cover;
+          }
+        }
+      }
+    }
+  }
+}

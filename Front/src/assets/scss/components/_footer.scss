@@ -1,0 +1,69 @@
+footer {
+  background-color: $footer;
+  display: grid;
+  grid-template-columns: repeat(3, 30vw);
+  grid-template-rows: 23vw;
+  padding: 0 2vw;
+
+  @media (max-width: $media) {
+  }
+  .imageFooter {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    img {
+      border-radius: 2vw;
+      height: auto;
+      width: 25vw;
+    }
+  }
+  .infoContent {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    .contactUs {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      p {
+        text-align: left;
+      }
+      .titleContact {
+        text-align: center;
+        font-size: 2vw;
+        font-weight: bold;
+      }
+      .info {
+        font-size: 1.5vw;
+      }
+    }
+  }
+  .alliesInfo {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .title {
+      font-size: 2vw;
+      font-weight: bold;
+    }
+    .alliesSpaces {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      height: 5vw;
+      width: 18vw;
+      img {
+        height: 4vw;
+        width: auto;
+      }
+      p {
+        font-size: 1.5vw;
+      }
+    }
+  }
+}

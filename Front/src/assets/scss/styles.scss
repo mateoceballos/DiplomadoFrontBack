@@ -1,0 +1,22 @@
+$mainColor: #34383c;
+$seconColor: #41494d;
+$complementaryColor1: #006ea8;
+$complementaryColor2: #e5e1da;
+$footer: #e5e1da;
+$colorTxtPrin: #fff;
+
+$media: 600px;
+@import "./NoMatch/index";
+@import "./components/header";
+@import "./components/footer";
+@import "./components/carrousel";
+@import "./atoms/separateLine";
+@import "./views/index";
+@import "./views/AboutUs";
+
+body {
+  margin: 0;
+  p {
+    margin: 0;
+  }
+}
