@@ -1,2 +1,33 @@
 .bannerPublicity {
+  align-items: center;
+  display: flex;
+  height: 15vw;
+  justify-content: center;
+  position: relative;
+  .imgPublicity {
+    height: 80%;
+    width: auto;
+  }
+  .degradeGen {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 10vw;
+  }
+  .degradeRL {
+    background: linear-gradient(
+      to left,
+      rgba(255, 255, 255, 0),
+      $seconColor
+    ); /* Difuminado de transparente a color de background */
+    left: 0;
+  }
+  .degradeLR {
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0),
+      $seconColor
+    ); /* Difuminado de transparente a color de background */
+    right: 0;
+  }
 }

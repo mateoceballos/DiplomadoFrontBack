@@ -1,5 +1,5 @@
 footer {
-  background-color: $footer;
+  background-color: $mainColor;
   display: grid;
   grid-template-columns: repeat(3, 30vw);
   grid-template-rows: 23vw;
@@ -30,10 +30,10 @@ footer {
       flex-direction: column;
       justify-content: center;
       p {
+        color: $colorTxtPrin;
         text-align: left;
       }
       .titleContact {
-        text-align: center;
         font-size: 2vw;
         font-weight: bold;
       }
@@ -48,6 +48,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     .title {
+      color: $colorTxtPrin;
       font-size: 2vw;
       font-weight: bold;
     }
@@ -62,6 +63,7 @@ footer {
         width: auto;
       }
       p {
+        color: $colorTxtPrin;
         font-size: 1.5vw;
       }
     }

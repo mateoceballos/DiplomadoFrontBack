@@ -6,7 +6,7 @@ import Loader from "../components/Loader/Loader";
 // Rutas del diplomado
 const Home = Loader(lazy(() => import("../views/Home/index")));
 const AboutUs = Loader(lazy(() => import("../views/AboutUs/index")));
-const NoMatch = Loader(lazy(() => import("../views/Error/error")));
+const Login = Loader(lazy(() => import("../views/Login/index")));
 
 const ProyectRoutes = {
   path: "/",
@@ -21,8 +21,8 @@ const ProyectRoutes = {
       element: <AboutUs />,
     },
     {
-      path: "*",
-      element: <NoMatch />,
+      path: "/session",
+      element: <Login />,
     },
   ],
 };

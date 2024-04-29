@@ -10,8 +10,10 @@
 }
 .carousel {
   display: flex;
+  background-color: $seconColor;
   justify-content: center;
   position: relative;
+  padding: 2vw 0;
   width: 100%;
 
   .prev,
@@ -40,7 +42,6 @@
     right: 0.5vw;
   }
   .ContentCarrusel {
-    background-color: $seconColor;
     padding: 0 2%;
     position: relative;
     width: 100%;

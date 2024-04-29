@@ -15,7 +15,7 @@ exports.getBooks = async (req, res) => {
     const { filter } = req.body;
     let dataBooks;
     if (filter) {
-      dataBooks = await Books.find(filter); // añadir { status: 3 } para el filtro
+      dataBooks = await Books.find(filter);
     } else {
       dataBooks = await Books.find();
     }

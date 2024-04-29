@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../../assets/images/Componentes/Header/logo.jpg";
+import Logo from "../../../assets/images/General/logo.png";
 import { useNavigate } from "react-router-dom";
 
 export default function Header() {
@@ -29,7 +29,7 @@ export default function Header() {
         <div
           className="itemMenuGeneral"
           onClick={() => {
-            navigate("/aboutUs");
+            navigate("/catalog");
           }}
         >
           <p>Catalogo</p>
@@ -37,15 +37,7 @@ export default function Header() {
         <div
           className="itemMenuGeneral"
           onClick={() => {
-            navigate("/PQR");
-          }}
-        >
-          <p>Preguntas frecuentes</p>
-        </div>
-        <div
-          className="itemMenuGeneral"
-          onClick={() => {
-            navigate("/Info");
+            navigate("/session");
           }}
         >
           <p>Inicia/Registrate</p>

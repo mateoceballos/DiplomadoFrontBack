@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
-import BArrow from "../../assets/images/General/BArrow.png";
-import NArrow from "../../assets/images/General/NArrow.png";
+import BArrow from "../../../assets/images/General/BArrow.png";
+import NArrow from "../../../assets/images/General/NArrow.png";
 
 const Carousel = ({
   slides,
@@ -21,13 +21,15 @@ const Carousel = ({
       const intervalId = setInterval(() => {
         const ScrollToStart =
           containerRef.current.scrollLeft + containerRef.current.clientWidth;
+        let valWidth = containerRef.current.scrollWidth * 0.1;
+        valWidth = containerRef.current.scrollWidth - valWidth;
+        // const rest =
         if (containerRef.current) {
-          if (ScrollToStart >= containerRef.current.scrollWidth) {
+          if (ScrollToStart >= valWidth) {
             containerRef.current.scrollLeft = 0;
             setScrollLeft(0);
             setLeftOpa(true);
             setRightOpa(false);
-            console.log("entrooo");
           } else {
             setLeftOpa(false);
             containerRef.current.scrollLeft += sizeInPx;

@@ -1,12 +1,12 @@
 import React from "react";
 
-export default function Index({ image }) {
+export default function Index({ img }) {
   return (
     <section>
       <div className="bannerPublicity">
         <div className="degradeGen degradeRL" />
         <div className="degradeGen degradeLR" />
-        <img src={image} alt="Banner" />
+        <img src={img} alt="Banner" className="imgPublicity" />
       </div>
     </section>
   );

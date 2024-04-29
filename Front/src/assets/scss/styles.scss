@@ -10,9 +10,12 @@ $media: 600px;
 @import "./components/header";
 @import "./components/footer";
 @import "./components/carrousel";
+@import "./components/banner";
+@import "./components/mostPopular";
 @import "./atoms/separateLine";
 @import "./views/index";
 @import "./views/AboutUs";
+@import "./views/sessionProcess";
 
 body {
   margin: 0;
