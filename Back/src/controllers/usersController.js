@@ -1,55 +1,55 @@
-const Books = require("../models/Books");
+const Users = require("../models/Users");
 
-exports.createBooks = async (req, res) => {
+exports.createUser = async (req, res) => {
   try {
-    let dataBooks = new Books(req.body);
-    await dataBooks.save();
-    res.send(dataBooks);
+    let dataUsers = new Users(req.body);
+    await dataUsers.save();
+    res.send(dataUsers);
   } catch (error) {
     console.log(error);
     res.status(500).send("Error al procesar tu solicitud");
   }
 };
-exports.getBooks = async (req, res) => {
+exports.getUsers = async (req, res) => {
   try {
     const { filter } = req.query;
-    let dataBooks;
+    let dataUsers;
     if (filter) {
-      dataBooks = await Books.find(filter);
+      dataUsers = await Users.find(filter);
     } else {
-      dataBooks = await Books.find();
+      dataUsers = await Users.find();
     }
-    res.json(dataBooks);
+    res.json(dataUsers);
   } catch (error) {
     console.log(error);
     res.status(500).send("Error al procesar tu solicitud");
   }
 };
 
-exports.updateBook = async (req, res) => {
+exports.updateUser = async (req, res) => {
   try {
     let { id } = req.params;
-    const updatedBook = await Books.findOneAndUpdate({ _id: id }, req.body, {
+    const updatedUser = await Users.findOneAndUpdate({ _id: id }, req.body, {
       new: true,
     });
-    if (!updatedBook) {
+    if (!updatedUser) {
       return res.status(404).send("Libro no encontrado");
     }
-    res.json(updatedBook);
+    res.json(updatedUser);
   } catch (error) {
     console.log(error);
     res.status(500).send("Error al procesar tu solicitud");
   }
 };
 
-exports.deleteBookById = async (req, res) => {
+exports.deleteUserById = async (req, res) => {
   try {
     const { id } = req.params;
-    const deletedBook = await Books.findByIdAndDelete(id);
-    if (!deletedBook) {
+    const deletedUser = await Users.findByIdAndDelete(id);
+    if (!deletedUser) {
       return res.status(404).send("Libro no encontrado");
     }
-    res.json({ message: "Libro eliminado correctamente", deletedBook });
+    res.json({ message: "Libro eliminado correctamente", deletedUser });
   } catch (error) {
     console.log(error);
     res.status(500).send("Error al procesar tu solicitud");

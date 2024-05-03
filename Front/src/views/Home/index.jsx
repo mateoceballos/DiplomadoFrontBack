@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import B1 from "../../assets/images/Views/index/B1.jpeg";
 import B2 from "../../assets/images/Views/index/B2.jpeg";
 import B3 from "../../assets/images/Views/index/B3.jpeg";
@@ -16,15 +16,41 @@ import Carousel from "../../components/web/carrousel";
 import SeparateLine from "../../components/atoms/separateLine";
 import Banner from "../../components/web/banner";
 import Popular from "../../components/web/mostPopular";
+import axios from "axios";
 
 import parraf1 from "../../assets/texts";
 export default function Index() {
+  // Data de la base de datos
+  const [dataPopular, setDataPopular] = useState("");
   const slides = [B1, B2, B3, B4, B5, B6, B7, B8, B9, B10, B11];
-  const dataPopular = {
-    title: "La bella y la bestia",
-    imageUrl: genBook,
-    resume: parraf1.text1,
-  };
+  useEffect(() => {
+    const loadData = async () => {
+      const loginUser = await axios.get("http://localhost:3001/books", {
+        params: {
+          filter: {
+            mostPopular: true,
+          },
+        },
+      });
+      const data = loginUser.data[0];
+      console.log("dataaaaaa", data);
+      if (data) {
+        setDataPopular({
+          title: data.name,
+          imageUrl: genBook,
+          resume: data.resume,
+        });
+      } else {
+        setDataPopular({
+          title: "MostImportant",
+          imageUrl: genBook,
+          resume: parraf1.text1,
+        });
+      }
+    };
+    loadData();
+  }, []);
+
   return (
     <>
       <Carousel slides={slides} automatic={true} />

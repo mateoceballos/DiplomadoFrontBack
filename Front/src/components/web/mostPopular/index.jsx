@@ -2,6 +2,7 @@ import React from "react";
 
 export default function Index({ data }) {
   const { title, imageUrl, resume } = data;
+  console.log("data", data);
   return (
     <>
       <div className="mostPopular">

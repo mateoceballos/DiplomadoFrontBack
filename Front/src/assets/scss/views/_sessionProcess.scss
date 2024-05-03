@@ -1,4 +1,42 @@
 $c-bezier: cubic-bezier(0.1, 0.22, 0.8, 1.13);
+.modaleExtern {
+  align-items: center;
+  background-color: #34383c86;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+  .modalInter {
+    align-items: center;
+    background-color: white;
+    border-radius: 5vw;
+    display: flex;
+    flex-direction: column;
+    height: 35vw;
+    justify-content: center;
+    width: 35vw;
+    .textModal {
+      color: $mainColor;
+      font-size: 3vw;
+      margin-bottom: 3vw;
+      text-align: center;
+      width: 80%;
+    }
+  }
+  .buttonModal {
+    background-color: #15a515;
+    border: 0;
+    border-radius: 3vw;
+    color: $colorTxtPrin;
+    height: 6vw;
+    width: 15vw;
+  }
+}
 .sessionProcess {
   align-items: center;
   display: flex;
@@ -6,6 +44,10 @@ $c-bezier: cubic-bezier(0.1, 0.22, 0.8, 1.13);
   height: 60vw;
   padding-top: 2vw;
   position: relative;
+  @media (max-width: $media) {
+    height: 130vw;
+    padding-top: 4vw;
+  }
   .fondoRegister {
     height: 100%;
     left: 0;
@@ -27,6 +69,9 @@ $c-bezier: cubic-bezier(0.1, 0.22, 0.8, 1.13);
       font-size: 1.5vw;
       position: relative;
       text-shadow: 0.1vw 0.1vw 2px black;
+      @media (max-width: $media) {
+        font-size: 3.5vw;
+      }
     }
     .switchLabel {
       background-color: $mainColor;
@@ -37,6 +82,10 @@ $c-bezier: cubic-bezier(0.1, 0.22, 0.8, 1.13);
       margin: 0 2vw;
       position: relative;
       width: 5vw;
+      @media (max-width: $media) {
+        height: 5vw;
+        width: 15vw;
+      }
       &::after {
         content: "";
         background-color: #750000;
@@ -47,6 +96,12 @@ $c-bezier: cubic-bezier(0.1, 0.22, 0.8, 1.13);
         top: 0.5vw;
         transition: 0.3s;
         width: 1vw;
+        @media (max-width: $media) {
+          height: 3vw;
+          left: 1vw;
+          top: 1vw;
+          width: 3vw;
+        }
       }
     }
     #btnSwitch {
@@ -56,6 +111,9 @@ $c-bezier: cubic-bezier(0.1, 0.22, 0.8, 1.13);
       background-color: $seconColor;
       &::after {
         left: 3.5vw;
+        @media (max-width: $media) {
+          left: 10.5vw;
+        }
       }
     }
   }
@@ -67,6 +125,11 @@ $c-bezier: cubic-bezier(0.1, 0.22, 0.8, 1.13);
     position: relative;
     width: 60vw;
     z-index: 2;
+    @media (max-width: $media) {
+      height: 110vw;
+      margin-top: 5vw;
+      width: 80vw;
+    }
     .insideCard {
       background-color: $mainColor;
       border-radius: 3vw;
@@ -89,6 +152,9 @@ $c-bezier: cubic-bezier(0.1, 0.22, 0.8, 1.13);
           font-size: 1vw;
           margin-bottom: 1vw;
           text-align: center;
+          @media (max-width: $media) {
+            font-size: 3vw;
+          }
         }
         .divInputs {
           align-items: center;
@@ -98,6 +164,10 @@ $c-bezier: cubic-bezier(0.1, 0.22, 0.8, 1.13);
           margin-bottom: 0.5vw;
           position: relative;
           width: 20vw;
+          @media (max-width: $media) {
+            height: 10vw;
+            width: 100%;
+          }
           .inputStyle {
             border: 0.1vw solid #000;
             border-radius: 1vw;
@@ -106,11 +176,19 @@ $c-bezier: cubic-bezier(0.1, 0.22, 0.8, 1.13);
             margin-bottom: 0.5vw;
             padding: 0 0.5vw;
             width: 100%;
+            @media (max-width: $media) {
+              height: 6vw;
+              font-size: 3vw;
+              padding: 0 1vw;
+            }
           }
           .errorText {
             color: #ff5f5f;
             font-size: 1vw;
             opacity: 0;
+            @media (max-width: $media) {
+              font-size: 2vw;
+            }
           }
           .imgEyePass {
             cursor: pointer;
@@ -119,6 +197,12 @@ $c-bezier: cubic-bezier(0.1, 0.22, 0.8, 1.13);
             right: 0.5vw;
             top: 0.5vw;
             width: 2vw;
+            @media (max-width: $media) {
+              height: 4vw;
+              right: 1vw;
+              top: 1vw;
+              width: 4vw;
+            }
           }
         }
         .errorData {
@@ -140,6 +224,13 @@ $c-bezier: cubic-bezier(0.1, 0.22, 0.8, 1.13);
         margin-top: 1vw;
         margin-bottom: 1vw;
         width: 20vw;
+        @media (max-width: $media) {
+          height: 10vw;
+          font-size: 4vw;
+          margin-top: 2vw;
+          margin-bottom: 2vw;
+          width: 30vw;
+        }
       } /* Para navegadores WebKit */
       input[type="password"]::-webkit-contacts-auto-fill-button,
       input[type="password"]::-webkit-credentials-auto-fill-button {
@@ -169,6 +260,9 @@ $c-bezier: cubic-bezier(0.1, 0.22, 0.8, 1.13);
         flex-direction: column;
         .title {
           font-size: 2vw;
+          @media (max-width: $media) {
+            font-size: 5vw;
+          }
         }
         .contentLogin {
           align-items: center;
@@ -176,6 +270,9 @@ $c-bezier: cubic-bezier(0.1, 0.22, 0.8, 1.13);
           display: grid;
           grid-template-columns: repeat(2, 20vw);
           margin-top: 2vw;
+          @media (max-width: $media) {
+            grid-template-columns: 50vw;
+          }
         }
       }
       .registerProcess {
@@ -187,6 +284,9 @@ $c-bezier: cubic-bezier(0.1, 0.22, 0.8, 1.13);
         transform: rotateY(180deg);
         .title {
           font-size: 2vw;
+          @media (max-width: $media) {
+            font-size: 5vw;
+          }
         }
         .contentForm {
           align-items: center;
@@ -194,8 +294,14 @@ $c-bezier: cubic-bezier(0.1, 0.22, 0.8, 1.13);
           display: grid;
           grid-template-columns: repeat(2, 20vw);
           justify-content: center;
+          @media (max-width: $media) {
+            grid-template-columns: 50vw;
+          }
           .mailRegister {
             grid-area: 2 / 1 / 2 / 3;
+            @media (max-width: $media) {
+              grid-area: auto;
+            }
             div {
               width: 100%;
             }

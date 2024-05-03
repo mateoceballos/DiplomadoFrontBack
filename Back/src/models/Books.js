@@ -17,6 +17,10 @@ const bookSchemma = mongoose.Schema({
     type: String,
     require: true,
   },
+  mostPopular: {
+    type: Boolean,
+    require: false,
+  },
 });
 
 module.exports = mongoose.model("booksCollection", bookSchemma);

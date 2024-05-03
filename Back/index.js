@@ -1,8 +1,10 @@
 const express = require("express");
 const conexionDB = require("./src/config/db");
+const cors = require("cors");
 const app = express();
 
 conexionDB();
+app.use(cors());
 app.use(express.json());
 app.use("/", require("./src/routes/api"));
 // app.get("/", (req, res) => {

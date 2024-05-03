@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../../../assets/images/General/logo.png";
+import menu from "../../../assets/images/Componentes/Header/menu.png";
 import { useNavigate } from "react-router-dom";
+import SeparateLine from "../../atoms/separateLine";
 
 export default function Header() {
   const history = useNavigate();
+  const [respMenu, setRespMenu] = useState(false);
   const navigate = (link = "") => {
     history(link);
+    setRespMenu(!respMenu);
   };
   return (
     <header className="headerMainClass">
@@ -17,7 +21,18 @@ export default function Header() {
       >
         <img src={Logo} alt="Logo" />
       </div>
-      <div className="contentOptions">
+      <img
+        className="imgRespBurger"
+        src={menu}
+        alt="menuBurger"
+        onClick={() => {
+          setRespMenu(!respMenu);
+        }}
+      />
+      <div className={`contentOptions ${respMenu ? "showmenu" : "noTouch"}`}>
+        <div className="lineResp">
+          <SeparateLine />
+        </div>
         <div
           className="itemMenuGeneral"
           onClick={() => {

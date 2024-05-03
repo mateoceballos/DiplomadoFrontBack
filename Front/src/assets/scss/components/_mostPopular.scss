@@ -5,26 +5,48 @@
   flex-direction: column;
   justify-content: center;
   padding-bottom: 3vw;
+  @media (max-width: $media) {
+    padding-bottom: 5vw;
+  }
   p {
     color: $colorTxtPrin;
   }
   .titleGen {
+    font-size: 3vw;
     margin-bottom: 1vw;
     margin-top: 5vw;
-    font-size: 3vw;
+    @media (max-width: $media) {
+      font-size: 5vw;
+      margin-bottom: 2vw;
+      margin-top: 7vw;
+    }
   }
   .pTitle {
     font-size: 2vw;
+
+    @media (max-width: $media) {
+      font-size: 4vw;
+    }
   }
   img {
     height: 20vw;
     border-radius: 2vw;
     margin-top: 3vw;
     width: auto;
+    @media (max-width: $media) {
+      height: 40vw;
+      margin-top: 5vw;
+    }
   }
   .resume {
-    text-align: justify;
+    font-size: 2vw;
     margin-top: 3vw;
+    text-align: justify;
     width: 70vw;
+    @media (max-width: $media) {
+      font-size: 4vw;
+      margin-top: 5vw;
+      width: 80vw;
+    }
   }
 }

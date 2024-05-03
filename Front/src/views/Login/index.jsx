@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import img1 from "../../assets/images/Login/back.jpeg";
 import eOp from "../../assets/images/Login/eyeOp.png";
 import eCl from "../../assets/images/Login/eyeCl.png";
@@ -30,32 +31,123 @@ export default function Index() {
   const [errorRegisEmail, setErrorRegisEmail] = useState(false);
   const [errorRegisPass1, setErrorRegisPass1] = useState(false);
   const [errorRegisPass2, setErrorRegisPass2] = useState(false);
+  // Loader y modal
+  const [loader, setLoader] = useState(false);
+  const [modal, setModal] = useState(false);
+  const [modalText, setModalText] = useState(false);
 
-  const processLogin = () => {
-    emailVal.length === 0
-      ? setErrorLoginEmail(true)
-      : setErrorLoginEmail(false);
-    passVal.length === 0 ? setErrorLoginPass(true) : setErrorLoginPass(false);
+  const modalAction = () => {
+    setModal(false);
   };
-  const processRegister = () => {
-    regisNameVal.length === 0
-      ? setErrorRegisName(true)
-      : setErrorRegisName(false);
-    regisLastNameVal.length === 0
-      ? setErrorRegisLastName(true)
-      : setErrorRegisLastName(false);
-    regisEmailVal.length === 0
-      ? setErrorRegisEmail(true)
-      : setErrorRegisEmail(false);
-    passValRegist.length === 0
-      ? setErrorRegisPass1(true)
-      : setErrorRegisPass1(false);
-    passValRegistConf.length === 0
-      ? setErrorRegisPass2(true)
-      : setErrorRegisPass2(false);
+  const processLogin = async () => {
+    let errors = 0;
+    setLoader(true);
+    if (emailVal.length === 0) {
+      setErrorLoginEmail(true);
+      errors += 1;
+    } else {
+      setErrorLoginEmail(false);
+    }
+    if (passVal.length === 0) {
+      setErrorLoginPass(true);
+      errors += 1;
+    } else {
+      setErrorLoginPass(false);
+    }
+    if (errors === 0) {
+      setLoader(true);
+      const loginUser = await axios.get("http://localhost:3001/user", {
+        params: {
+          filter: {
+            email: emailVal,
+            password: passVal,
+          },
+        },
+      });
+      if (loginUser.data.length > 0) {
+        setModalText("!Usuario y clave correctos¡");
+      } else {
+        setModalText("Usuario o clave incorrecto");
+      }
+      setLoader(false);
+      setModal(true);
+      console.log("loginUser", loginUser.data);
+    }
+    setLoader(false);
+  };
+  const processRegister = async () => {
+    let errors = 0;
+    if (regisNameVal.length === 0) {
+      errors += 1;
+      setErrorRegisName(true);
+    } else {
+      setErrorRegisName(false);
+    }
+    if (regisLastNameVal.length === 0) {
+      errors += 1;
+      setErrorRegisLastName(true);
+    } else {
+      setErrorRegisLastName(false);
+    }
+    if (regisEmailVal.length === 0) {
+      errors += 1;
+      setErrorRegisEmail(true);
+    } else {
+      setErrorRegisEmail(false);
+    }
+    if (passValRegist.length === 0) {
+      errors += 1;
+      setErrorRegisPass1(true);
+    } else {
+      setErrorRegisPass1(false);
+    }
+    if (passValRegistConf.length === 0) {
+      errors += 1;
+      setErrorRegisPass2(true);
+    } else {
+      setErrorRegisPass2(false);
+    }
+    if (errors === 0) {
+      setLoader(true);
+      const createUser = await axios.post("http://localhost:3001/user", {
+        name: regisNameVal,
+        lastname: regisLastNameVal,
+        email: regisEmailVal,
+        password: passValRegist,
+      });
+      if (createUser.status === 200) {
+        setModalText("Usuario creado con exito");
+      } else {
+        setModalText("Ha ocurrido un error al crear el usuario");
+      }
+      setLoader(false);
+      setModal(true);
+    }
   };
   return (
     <>
+      {loader && (
+        <div className="backLoader">
+          <span className="loader"></span>
+          <p className="pLoading">Cargando...</p>
+        </div>
+      )}
+      {modal && (
+        <div className="modaleExtern">
+          <div className="modalInter">
+            <p className="textModal">{modalText}</p>
+            <button
+              type="button"
+              className="buttonModal"
+              onClick={() => {
+                modalAction();
+              }}
+            >
+              Aceptar
+            </button>
+          </div>
+        </div>
+      )}
       <section className="sessionProcess">
         <img className="fondoRegister" src={img1} alt="fondoRegister" />
         <div className="contenSwitch">

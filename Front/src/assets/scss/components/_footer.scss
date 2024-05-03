@@ -4,8 +4,10 @@ footer {
   grid-template-columns: repeat(3, 30vw);
   grid-template-rows: 23vw;
   padding: 0 2vw;
-
   @media (max-width: $media) {
+    grid-template-columns: 80vw;
+    grid-template-rows: 20vw 60vw 50vw;
+    justify-content: center;
   }
   .imageFooter {
     align-items: center;
@@ -13,10 +15,16 @@ footer {
     justify-content: center;
     height: 100%;
     width: 100%;
+    @media (max-width: $media) {
+      grid-area: 3/1;
+    }
     img {
       border-radius: 2vw;
       height: auto;
       width: 25vw;
+      @media (max-width: $media) {
+        width: 60vw;
+      }
     }
   }
   .infoContent {
@@ -36,9 +44,15 @@ footer {
       .titleContact {
         font-size: 2vw;
         font-weight: bold;
+        @media (max-width: $media) {
+          font-size: 4vw;
+        }
       }
       .info {
         font-size: 1.5vw;
+        @media (max-width: $media) {
+          font-size: 3vw;
+        }
       }
     }
   }
@@ -51,6 +65,9 @@ footer {
       color: $colorTxtPrin;
       font-size: 2vw;
       font-weight: bold;
+      @media (max-width: $media) {
+        font-size: 4vw;
+      }
     }
     .alliesSpaces {
       align-items: center;
@@ -58,13 +75,23 @@ footer {
       justify-content: space-between;
       height: 5vw;
       width: 18vw;
+      @media (max-width: $media) {
+        height: 30vw;
+        width: 60vw;
+      }
       img {
         height: 4vw;
         width: auto;
+        @media (max-width: $media) {
+          height: 18vw;
+        }
       }
       p {
         color: $colorTxtPrin;
         font-size: 1.5vw;
+        @media (max-width: $media) {
+          font-size: 3vw;
+        }
       }
     }
   }

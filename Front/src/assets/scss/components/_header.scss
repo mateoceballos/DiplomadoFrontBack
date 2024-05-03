@@ -7,10 +7,23 @@
   justify-content: space-between;
   height: 5vw;
   width: 100%;
+  @media (max-width: $media) {
+    grid-template-columns: 70vw 1fr;
+    grid-template-rows: 15vw;
+    height: 15vw;
+    position: relative;
+  }
   .imgHeader {
     height: 4vw;
     margin-left: 2vw;
     width: auto;
+    @media (max-width: $media) {
+      grid-area: 1/2;
+      display: flex;
+      justify-content: center;
+      height: 12vw;
+      margin: 0;
+    }
     img {
       cursor: pointer;
       border-radius: 5vw;
@@ -18,10 +31,40 @@
       width: auto;
     }
   }
+  .imgRespBurger {
+    display: none;
+    @media (max-width: $media) {
+      cursor: pointer;
+      display: block;
+      height: 12vw;
+      position: absolute;
+      top: 1.5vw;
+      left: 3vw;
+      width: auto;
+    }
+  }
   .contentOptions {
     align-items: center;
     display: flex;
     height: 100%;
+    @media (max-width: $media) {
+      background-color: $mainColor;
+      flex-direction: column;
+      height: auto;
+      opacity: 0;
+      position: absolute;
+      transition: all 0.5s;
+      top: 15vw;
+      width: 100%;
+      z-index: 11;
+    }
+    .lineResp {
+      display: none;
+      @media (max-width: $media) {
+        display: block;
+        width: 100%;
+      }
+    }
     .itemMenuGeneral {
       align-items: center;
       cursor: pointer;
@@ -32,13 +75,29 @@
       -webkit-transition: ease-out 0.4s;
       -moz-transition: ease-out 0.4s;
       transition: ease-out 0.4s;
+      @media (max-width: $media) {
+        height: 12vw;
+      }
       &:hover {
         box-shadow: inset 0 0 0 50px $complementaryColor1;
       }
       p {
         color: $colorTxtPrin;
         font-size: 1.5vw;
+        @media (max-width: $media) {
+          font-size: 4vw;
+        }
       }
+    }
+  }
+  .showmenu {
+    @media (max-width: $media) {
+      opacity: 1;
+    }
+  }
+  .noTouch {
+    @media (max-width: $media) {
+      pointer-events: none;
     }
   }
 }

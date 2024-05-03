@@ -6,7 +6,9 @@ const Carousel = ({
   slides,
   automatic = true,
   boxImage = "30vw",
+  boxImageResp = "60vw",
   imageInter = "29vw",
+  imageInterResp = "59vw",
 }) => {
   const distance = "40"; // Tamaño en vw que se dejará de ancho a los contenedores de las imagenes
   const vwWidth = window.innerWidth;
@@ -15,6 +17,9 @@ const Carousel = ({
   const [scrollLeft, setScrollLeft] = useState(0);
   const [leftOpa, setLeftOpa] = useState(false);
   const [rightOpa, setRightOpa] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [styleBox, setStyleBox] = useState({});
+  const [styleImage, setStyleImage] = useState({});
 
   useEffect(() => {
     if (automatic) {
@@ -22,7 +27,7 @@ const Carousel = ({
         const ScrollToStart =
           containerRef.current.scrollLeft + containerRef.current.clientWidth;
         let valWidth = containerRef.current.scrollWidth * 0.1;
-        valWidth = containerRef.current.scrollWidth - valWidth;
+        valWidth = containerRef.current.scrollWidth - 100;
         // const rest =
         if (containerRef.current) {
           if (ScrollToStart >= valWidth) {
@@ -43,11 +48,54 @@ const Carousel = ({
             }
           }
         }
-      }, 5000); // 5000 milisegundos = 5 segundos
+      }, 3000); // 5000 milisegundos = 5 segundos
       return () => clearInterval(intervalId);
     }
   }, [sizeInPx, scrollLeft, automatic]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+    // Agregar un event listener para el evento 'resize' cuando el componente se monta
+    window.addEventListener("resize", handleResize);
+    setStyleImage(
+      screenWidth > 600
+        ? { height: imageInter, width: imageInter }
+        : { height: imageInterResp, width: imageInterResp }
+    );
+    setStyleBox(
+      screenWidth > 600
+        ? { height: imageInter, width: boxImage }
+        : { height: imageInterResp, width: boxImageResp }
+    );
+    console.log(styleBox);
+    // Eliminar el event listener cuando el componente se desmonta para evitar fugas de memoria
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [screenWidth]);
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    setStyleImage(
+      screenWidth > 600
+        ? { height: imageInter, width: imageInter }
+        : { height: imageInterResp, width: imageInterResp }
+    );
+    setStyleBox(
+      screenWidth > 600
+        ? { height: imageInter, width: boxImage }
+        : { height: imageInterResp, width: boxImageResp }
+    );
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const goToPrevSlide = () => {
     if (containerRef.current) {
       if (containerRef.current.scrollLeft === 0) {
@@ -85,20 +133,9 @@ const Carousel = ({
         <div className="slideContainer" ref={containerRef}>
           {slides.map((slide, index) => {
             return (
-              <div
-                key={index}
-                className="imgGeneral"
-                style={{ height: imageInter, width: boxImage }}
-              >
-                <div
-                  className="contentImage"
-                  style={{ height: imageInter, width: boxImage }}
-                >
-                  <img
-                    src={slide}
-                    alt=""
-                    style={{ height: imageInter, width: imageInter }}
-                  />
+              <div key={index} className="imgGeneral" style={styleBox}>
+                <div className="contentImage" style={styleBox}>
+                  <img src={slide} alt="" style={styleImage} />
                 </div>
               </div>
             );

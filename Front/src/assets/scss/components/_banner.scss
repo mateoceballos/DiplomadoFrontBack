@@ -4,6 +4,9 @@
   height: 15vw;
   justify-content: center;
   position: relative;
+  @media (max-width: $media) {
+    height: 40vw;
+  }
   .imgPublicity {
     height: 80%;
     width: auto;
@@ -13,6 +16,9 @@
     position: absolute;
     top: 0;
     width: 10vw;
+    @media (max-width: $media) {
+      width: 20vw;
+    }
   }
   .degradeRL {
     background: linear-gradient(
